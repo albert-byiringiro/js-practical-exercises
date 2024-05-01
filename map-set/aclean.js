@@ -1,14 +1,16 @@
 function aclean(arr) {
-    let obj = {};
+    // split all waords and sort them
+    // key-value pair collection for sorted words
+    let map = new Map();
 
-    for (let i = 0; i < arr.length; i++) {
-        let sorted = arr[i].toLowerCase().split("").sort().join("");
-        obj[sorted] = arr[i];
+    for (let word of arr) {
+        // split 
+        let sorted = word.toLowerCase().split("").sort().join("");
+        map.set(sorted, word);
     }
-
-    return Object.values(obj);
+    return Array.from(map.values());
 }
 
 let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-console.log(aclean(arr));
+console.log(aclean(arr))
