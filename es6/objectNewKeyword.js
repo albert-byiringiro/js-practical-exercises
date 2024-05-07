@@ -21,3 +21,24 @@ function PersonConstructor() {
 const simon = new PersonConstructor;
 simon.greet(); // -> Logs 'hello'
 
+
+/*** CHALLENGE 6 ***/
+
+function personFromConstructor(name, age) {
+    // add code here
+    const person = new PersonConstructor();
+    person.name = name;
+    person.age = age;
+
+    return person;
+}
+
+
+const mike = new personFromConstructor('Mike', 30);
+
+
+// /********* Uncomment these lines to test your work! *********/
+console.log(mike.name); // -> Logs 'Mike'
+console.log(mike.age); //-> Logs 30
+// mike.greet(); //-> Logs 'hello'
+
