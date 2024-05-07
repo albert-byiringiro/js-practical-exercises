@@ -42,3 +42,12 @@ console.log(mike.name); // -> Logs 'Mike'
 console.log(mike.age); //-> Logs 30
 // mike.greet(); //-> Logs 'hello'
 
+
+/*** CHALLENGE 7 ***/
+// add code here
+
+PersonConstructor.prototype.introduce = function () {
+    console.log(`Hi, my name is ${this.name}`);
+}
+
+mike.introduce(); // -> Logs 'Hi, my name is Mike'
