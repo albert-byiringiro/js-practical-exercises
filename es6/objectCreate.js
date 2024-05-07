@@ -38,3 +38,9 @@ console.log(sandra.age); //-> Logs 26
 sandra.greet(); //-> Logs 'hello'
 
 
+
+/*** CHALLENGE 4 ***/
+
+// add code here
+
+sandra.introduce(); // -> Logs 'Hi, my name is Sandra'
