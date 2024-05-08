@@ -18,3 +18,20 @@ Make sure that adminFactory objects have access to adminFunctionStore methods, w
 Challenge 14
 Created a method called sharePublicMessage that logs 'Welcome users!' and will be available to adminFactory objects, but not userFactory objects. Do not add this method directly in the adminFactory function.
 ****************************************************************/
+
+const userFunctionStore = {
+    sayType: function () {
+        console.log("I am a " + this.type);
+    }
+}
+
+function userFactory(name, score) {
+    let user = Object.create(userFunctionStore);
+    user.type = "User";
+    user.name = name;
+    user.score = score;
+    return user;
+}
+
+/*** CHALLENGE 10 ***/
+const adminFunctionStore = Object.create(userFunctionStore);
