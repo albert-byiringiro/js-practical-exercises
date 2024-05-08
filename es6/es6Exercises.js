@@ -35,3 +35,11 @@ function userFactory(name, score) {
 
 /*** CHALLENGE 10 ***/
 const adminFunctionStore = Object.create(userFunctionStore);
+
+/*** CHALLENGE 11, 12, 13 ***/
+
+function adminFactory(name, score) {
+    const admin = new userFactory(name, score);
+    admin.type = "Admin";
+    return admin;
+}
