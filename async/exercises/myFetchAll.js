@@ -25,3 +25,5 @@ myFetch("GET", 'https://jsonplaceholder.typicode.com/posts/1')
     }).catch(error => {
         console.error(error);
     })
+
+
