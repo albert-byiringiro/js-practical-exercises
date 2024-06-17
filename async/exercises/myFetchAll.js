@@ -1,19 +1,27 @@
-const xhr = new XMLHttpRequest();
+function myFetch(method, url) {
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open(method, url, true);
+        xhr.onload = () => {
+            if (xhr.status >= 200 && xhr.status < 300) {
+                resolve(xhr.responseText);
+            } else {
+                reject(new Error(`HTTP Error: ${xhr.status} and ${xhr.statusText}`));
+            }
+        };
 
-xhr.open('GET', `https://jsonplaceholder.typicode.com/users`, true);
+        // on network issues
+        xhr.onerror = () => {
+            reject('Network Error');
+        }
 
-xhr.onload = function () {
-    if (xhr.status === 200) {
-        // handle successfull response
-        console.log(xhr.responseText);
-    } else {
-        console.error('HTTP error:', xhr.status, xhr.statusText);
-    }
-};
-
-xhr.onerror = function () {
-    // handle network errors
-    console.log('Network Error');
+        xhr.send();
+    });
 }
 
-xhr.send();
+myFetch("GET", 'https://jsonplaceholder.typicode.com/posts/1')
+    .then(response => {
+        console.log(response);
+    }).catch(error => {
+        console.error(error);
+    })
