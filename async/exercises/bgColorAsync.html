@@ -19,7 +19,9 @@
 
       let body = document.querySelector("body");
 
-      body.style.backgroundColor = random_hex_code();
+      setInterval(() => {
+        body.style.backgroundColor = random_hex_code();
+      }, 3000);
     </script>
   </body>
 </html>
