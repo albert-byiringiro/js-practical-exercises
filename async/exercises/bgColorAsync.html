@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      Write a javascript function that changes the background color of the body
+      (HTML tag) every 3 seconds.
+    </h1>
+
+    <script>
+      let random_hex_code = () => {
+        let n = (Math.random() * 0xfffff * 10000).toString(16);
+        return "#" + n.slice(0, 6);
+      };
+
+      let body = document.querySelector("body");
+
+      body.style.backgroundColor = random_hex_code();
+    </script>
+  </body>
+</html>
