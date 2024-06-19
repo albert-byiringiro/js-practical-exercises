@@ -1,4 +1,5 @@
-// Exercise: Create two async functions, one that returns a first name and another that returns a last name. Chain them to return the full name.
+// Exercise: Modify the previous example to fetch the first name and last name in parallel.
+
 
 function delay(ms) {
     return new Promise((resolve) => {
@@ -6,20 +7,27 @@ function delay(ms) {
     });
 }
 
-async function firstName() {
+async function getfirstName() {
     await delay(1000)
     return "Ineza"
 }
 
-async function lastName() {
+async function getlastName() {
     await delay(1000)
     return "Y'Imana"
 }
 
+// first exercise
+/*
 async function fullName() {
-    const first = await firstName();
-    const last = await lastName();
+    const first = await getfirstName();
+    const last = await getlastName();
     return `${first} ${last}`;
 }
+*/
 
-fullName().then(name => console.log(name))
+async function getFullName() {
+    const [firstName, lastName] = await Promise.all([getfirstName(), getlastName()])
+    return `${firstName} ${lastName}`;
+}
+getFullName().then(name => console.log(name))
