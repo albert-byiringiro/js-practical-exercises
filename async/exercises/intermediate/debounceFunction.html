@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      class="debounce-text"
+      ,
+      placeholder="enter something here"
+    />
+
+    <script>
+      // Debouncing is a programming technique used to ensure that a function is only executed once after a specified period of inactivity.
+      //define a bounceback function
+      function debounce(mainFunction, delay = 3000) {
+        let timer;
+
+        return function (...args) {
+          clearTimeout(timer);
+
+          timer = setTimeout(() => {
+            mainFunction.apply(this, args);
+          }, delay);
+        };
+      }
+
+      function searchText(event) {
+        console.log(`Input value: ${event.target.value}`);
+      }
+
+      const debounceHandleInput = debounce(searchText);
+
+      const debounceInput = document.querySelector(".debounce-text");
+
+      debounceInput.addEventListener("input", debounceHandleInput);
+    </script>
+  </body>
+</html>
