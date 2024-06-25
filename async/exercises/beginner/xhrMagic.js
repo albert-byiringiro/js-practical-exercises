@@ -22,3 +22,32 @@ function xhrReq(url){
 xhrReq()
 
 */
+
+
+/*
+Create a function called myFetch that should work as a simple version of the native fetch() API. The function myFetch should use the XMLHttpRequest to make a GET Request and return a promise that resolves with the request’s response and rejects with an error if any.
+*/
+
+function myFetch(url) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onload = () => {
+      if (xhr.status >= 200 && xhr.status <= 300) {
+        resolve(xhr.responseText)
+      } else {
+        reject(`HTTP Error: ${xhr.status} - ${xhr.statusText}`);
+      }
+    }
+
+    xhr.onerror = () => {
+      reject(`Network error`)
+    }
+
+    xhr.send();
+  });
+}
+
+myFetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(data => console.log(data))
+  .catch(error => console.error(error))
