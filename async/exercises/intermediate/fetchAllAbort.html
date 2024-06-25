@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="Click me cancel all fetch" class="fetchers" />
+    <script>
+      /*
+      // Suppose you have a web page that sends multiple fetch requests to different URLs
+      // simultaneously. Implement a scenario where clicking a "Cancel All" button aborts
+      //  all ongoing fetch requests
+      // using AbortController. How would you structure your code to handle this situation
+
+      */
+
+      const controller = new AbortController();
+
+      const signal = controller.signal;
+
+      async function fetchAbort(urls) {
+        try {
+          const fetchData = async (url) => {
+            const response = await fetch(url, { signal });
+            const data = response.json();
+            return data;
+          };
+
+          const promises = urls.map(fetchData);
+
+          console.log(Promise.all(promises));
+        } catch (error) {
+          console.error(error);
+        }
+      }
+
+      const apiUrls = [
+        "https://jsonplaceholder.typicode.com/posts/4",
+        "https://jsonplaceholder.typicode.com/posts/5",
+        "https://jsonplaceholder.typicode.com/posts/6",
+      ];
+
+      setTimeout(() => {
+        fetchAbort(apiUrls).then((data) => console.log(data));
+      }, 5000);
+
+      const button = document.querySelector(".fetchers");
+
+      button.addEventListener("click", () => {
+        controller.abort();
+        console.log("I just killed some promises...");
+      });
+    </script>
+  </body>
+</html>
