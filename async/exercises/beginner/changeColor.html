@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>change color every 2 seconds</title>
+  </head>
+  <body>
+    <script>
+      function colorGenerator() {
+        const body = document.querySelector("body");
+
+        //  generate color:
+        let color = (Math.random() * 0xffff * 1000000).toString(16);
+
+        body.style.backgroundColor = "#" + color.slice(0, 6);
+      }
+      // schedule the setInterval
+
+      const intervalId = setInterval(colorGenerator, 3000);
+    </script>
+  </body>
+</html>
