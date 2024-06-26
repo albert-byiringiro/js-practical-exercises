@@ -171,21 +171,21 @@ xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
 xhr.onreadystatechange = function () {
-    if (xhr.readyState === 4 && xhr.status === 201) {
-        console.log("Response:", JSON.parse(xhr.responseText));
-    } else if (xhr.readyState === 4) {
-        console.error("Error:", xhr.statusText);
-    }
+  if (xhr.readyState === 4 && xhr.status === 201) {
+    console.log("Response:", JSON.parse(xhr.responseText));
+  } else if (xhr.readyState === 4) {
+    console.error("Error:", xhr.statusText);
+  }
 };
 
 xhr.onerror = function () {
-    console.log("Network Error")
+  console.log("Network Error")
 }
 
 let data = JSON.stringify({
-    title: "foo",
-    body: "bar",
-    userId: 1,
+  title: "foo",
+  body: "bar",
+  userId: 1,
 });
 
 xhr.send(data);
