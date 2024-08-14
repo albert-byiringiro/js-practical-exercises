@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import counterReducer from "./counterSlice";
+import counterReducer from "./counterReducer";
 
 export default function App() {
   const [count, dispatch] = useReducer(counterReducer, 0)
