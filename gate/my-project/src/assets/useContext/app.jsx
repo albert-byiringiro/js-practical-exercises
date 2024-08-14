@@ -1,16 +1,11 @@
-// src/App.js
-import UserProvider from './UserProvider';
-import UserProfile from './useContext/UserProfile';
-import UserSettings from './UserSettings';
+import { useSelector, useDispatch } from "react-redux";
+import {increment} from "./"
 
 function App() {
   return (
-    <UserProvider>
-      <div>
-        <UserProfile />
-        <UserSettings />
-      </div>
-    </UserProvider>
+    <div className="">
+      <h1>Count: </h1>
+    </div>
   );
 }
 

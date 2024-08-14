@@ -1,14 +1,18 @@
-import { useReducer } from "react";
-import counterReducer from "./counterSlice";
+import { useSelector, useDispatch } from "react-redux"
+import {increment, decrement, incrementByAmount} from "./counterSlice";
 
-export default function App() {
-  const [count, dispatch] = useReducer(counterReducer, 0)
-  
-    return (
-      <div>
-        <p>Count: {count}</p>
-        <button onClick={() => dispatch({ type: "INCREMENT" })}>Increment</button>
-        <button onClick={() => dispatch({ type: "DECREMENT" })}>Decrement</button>
-      </div>
-    );
-  }
+function App() {
+  const count = useSelector(state => state.counter);
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <h1>Count: {count}</h1>
+      <button className="" onClick={() => dispatch(increment())}>Increment</button>
+      <button className="" onClick={() => dispatch(decrement())}>Decrement</button>
+      <button className="" onClick={() => dispatch(incrementByAmount())}>IncrementBy5</button>
+    </div>
+  )
+}
+
+export default App
